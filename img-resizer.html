@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="A.K47 IMAGE TOOL - Your one-stop solution for image and PDF tools. Compress, convert, edit, and optimize images and PDFs with ease.">
+  <meta name="keywords" content="image tools, PDF tools, Resizer images, convert PDF, online tools, image compressor, PDF compressor">
+  <meta name="MUKUL KUMAR" content="ATUL KUMAR">
+  <title>A.K47 IMAGE TOOL - Compress, Convert, and Edit Images & PDFs</title>
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Lobster&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Google AdSense Script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_AD_UNIT_ID"
+    crossorigin="anonymous"></script>
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /* Navbar Styles */
+    nav {
+      background: #2C3E50;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      font-family: Arial, sans-serif;
+      position: fixed; /* Navbar fixed at top */
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    /* Logo Container */
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    /* "A.K47" Key-Style */
+    .logo-key {
+      background: #4657b4;       /* बैकग्राउंड कलर (आप अपनी पसंद से बदल सकते हैं) */
+      color: #fff;
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      margin-right: 10px;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+    /* "IMAGE TOOL" Text */
+    .logo-text {
+      font-size: 22px;
+      font-weight: bold;
+      font-family: 'Lobster', cursive; 
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .menu {
+      display: flex;
+      list-style: none;
+    }
+    .menu li {
+      position: relative;
+      margin-left: 20px;
+    }
+    .menu li a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      display: block;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .menu li a:active {
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+      transform: scale(0.98);
+    }
+    .menu li:hover .dropdown {
+      display: block;
+    }
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      color: black;
+      list-style: none;
+      min-width: 150px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .dropdown li a {
+      color: black;
+      padding: 10px;
+      display: block;
+      transition: box-shadow 0.2s ease;
+    }
+    .dropdown li a:active {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    .dropdown li a:hover {
+      background: #ddd;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #2C3E50;
+      }
+      .menu.active {
+        display: flex;
+      }
+      .menu li {
+        text-align: center;
+        margin: 0;
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+    
+    /* Body and Main Content Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      min-height: 100vh;
+      padding: 20px;
+      padding-top: 80px; /* For fixed navbar spacing */
+    }
+    h2 {
+      text-align: center;
+      margin: 20px 0;
+      color: #333;
+      font-size: 2rem;
+      font-weight: 700;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 1200px;
+      margin: 20px auto;
+    }
+    .left-side, .right-side {
+      width: 100%;
+      max-width: 100%;
+    }
+    @media (min-width: 768px) {
+      .left-side, .right-side {
+        width: 48%;
+      }
+    }
+    .photo-container {
+      width: 100%;
+      height: 300px;
+      border: 2px dashed #007bff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    .photo-container img {
+      max-width: 100%;
+      max-height: 100%;
+      display: none;
+      border-radius: 10px;
+    }
+    .photo-container input {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+    .photo-container label {
+      font-size: 1.2rem;
+      color: #007bff;
+      text-align: center;
+      cursor: pointer;
+    }
+    #photoInfo {
+      font-size: 0.9rem;
+      background: #f9f9f9;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .right-side label {
+      font-weight: bold;
+      color: #555;
+    }
+    .right-side input[type="range"], 
+    .right-side input[type="number"], 
+    .right-side select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .right-side {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; /* Space between controls and button */
+    }
+    .download-button-container {
+      display: flex;
+      justify-content: center; /* Center the button horizontally */
+      margin-top: 20px; /* Add some spacing above the button */
+    }
+    button {
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+
+    /* Ad Container Styles */
+    .ad-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar Section -->
+  <nav>
+    <!-- लोगो में "A.K47" कीबोर्ड की-स्टाइल + "IMAGE TOOL" टेक्स्ट -->
+    <div class="logo">
+      <span class="logo-key">A.K47</span>
+      <span class="logo-text">IMAGE TOOL</span>
+    </div>
+    
+    <div class="menu-toggle">☰</div>
+    <ul class="menu">
+      <li><a href="#">Merge PDF's</a></li>
+      <li><a href="#">Resize Image Pixel</a></li>
+      <li><a href="#">Passport Size Photo</a></li>
+      <li>
+        <a href="#">Convert Image ▼</a>
+        <ul class="dropdown">
+          <li><a href="#">PNG to JPG</a></li>
+          <li><a href="#">JPG to PNG</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Compress Image</a></li>
+      <li>
+        <a href="#">Compress PDF ▼</a>
+        <ul class="dropdown">
+          <li><a href="#">Reduce PDF Size</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Crop Image</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header Ad Unit -->
+  <div class="ad-container">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-9094625807207368/4391543288"
+      crossorigin="anonymous"></script>
+    <!-- Ad Unit -->
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-app-pub-9094625807207368/4391543288"
+      data-ad-slot="1234567890"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+  
+  <!-- Image Tool Section -->
+  <h2>A.K47 IMAGE TOOL</h2>
+  <div class="container">
+    <!-- Left Side - Photo Upload -->
+    <div class="left-side">
+      <div class="photo-container">
+        <img id="uploadedPhoto" alt="Uploaded Image" />
+        <input type="file" id="fileInput" accept="image/*">
+        <label for="fileInput" id="uploadLabel">Click or Drag & Drop to Upload</label>
+      </div>
+      <div id="photoInfo">No photo uploaded.</div>
+    </div>
+  
+    <!-- Right Side - Editing Controls -->
+    <div class="right-side">
+      <label>Brightness:
+        <input type="range" id="brightnessSlider" min="0" max="200" value="100">
+        <span id="brightnessValue">100%</span>
+      </label>
+      <label>Contrast:
+        <input type="range" id="contrastSlider" min="0" max="200" value="100">
+        <span id="contrastValue">100%</span>
+      </label>
+      <label>Saturation:
+        <input type="range" id="saturationSlider" min="0" max="200" value="100">
+        <span id="saturationValue">100%</span>
+      </label>
+  
+      <label>Desired Size (KB):
+        <input type="number" id="desiredSize">
+      </label>
+      <label>Download Format:
+        <select id="format">
+          <option value="png">PNG</option>
+          <option value="jpeg">JPEG</option>
+          <option value="jpg">JPG</option>
+          <option value="webp">WEBP</option>
+        </select>
+      </label>
+  
+      <!-- Centered Download Button -->
+      <div class="download-button-container">
+        <button onclick="downloadImage()">Download Image</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Ad Unit -->
+  <div class="ad-container">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-9094625807207368/6395686251"
+      crossorigin="anonymous"></script>
+    <!-- Ad Unit -->
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-app-pub-9094625807207368/6395686251"
+      data-ad-slot="0987654321"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2023 A.K47 IMAGE TOOL. All rights reserved.</p>
+  </footer>
+  
+  <!-- Scripts -->
+  <script>
+    // Navbar Toggle Functionality
+    document.querySelector(".menu-toggle").addEventListener("click", function() {
+      document.querySelector(".menu").classList.toggle("active");
+    });
+  
+    // Image Tool Scripts
+    let canvas = document.createElement('canvas');
+    let ctx = canvas.getContext('2d');
+    let image = new Image();
+  
+    const fileInput = document.getElementById('fileInput');
+    const uploadedPhoto = document.getElementById('uploadedPhoto');
+    const uploadLabel = document.getElementById('uploadLabel');
+    const photoInfo = document.getElementById('photoInfo');
+  
+    const brightnessSlider = document.getElementById('brightnessSlider');
+    const contrastSlider = document.getElementById('contrastSlider');
+    const saturationSlider = document.getElementById('saturationSlider');
+  
+    const brightnessValue = document.getElementById('brightnessValue');
+    const contrastValue = document.getElementById('contrastValue');
+    const saturationValue = document.getElementById('saturationValue');
+  
+    fileInput.addEventListener('change', function() {
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+  
+      reader.onload = function(event) {
+        image.src = event.target.result;
+        uploadedPhoto.src = event.target.result;
+        uploadedPhoto.style.display = 'block';
+        uploadLabel.style.display = 'none';
+  
+        image.onload = () => {
+          canvas.width = image.width;
+          canvas.height = image.height;
+          updatePhotoInfo(file, image.width, image.height);
+          applyFilters();
+        };
+      };
+      reader.readAsDataURL(file);
+    });
+  
+    function updatePhotoInfo(file, width, height) {
+      photoInfo.innerHTML = `
+        File Name: ${file.name}<br>
+        Size: ${(file.size / 1024).toFixed(2)} KB<br>
+        Dimensions: ${width}x${height}px
+      `;
+    }
+  
+    function applyFilters() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.filter = `
+        brightness(${brightnessSlider.value}%) 
+        contrast(${contrastSlider.value}%) 
+        saturate(${saturationSlider.value}%)
+      `;
+      ctx.drawImage(image, 0, 0);
+      uploadedPhoto.src = canvas.toDataURL();
+    }
+  
+    [brightnessSlider, contrastSlider, saturationSlider].forEach(slider => {
+      slider.addEventListener('input', () => {
+        applyFilters();
+        updateValues();
+      });
+    });
+  
+    function updateValues() {
+      brightnessValue.textContent = brightnessSlider.value + "%";
+      contrastValue.textContent = contrastSlider.value + "%";
+      saturationValue.textContent = saturationSlider.value + "%";
+    }
+  
+    function downloadImage() {
+      const desiredKB = parseFloat(document.getElementById('desiredSize').value) || 0;
+      const format = document.getElementById('format').value;
+      const mimeType = format === 'jpg' ? 'image/jpeg' : `image/${format}`;
+      let dataUrl = getExactSizeImage(canvas, desiredKB, mimeType);
+  
+      const link = document.createElement('a');
+      link.href = dataUrl;
+      link.download = `edited_image.${format}`;
+      link.click();
+    }
+  
+    function getExactSizeImage(canvas, desiredKB, mimeType) {
+      let quality = 1.0;
+      // अगर यूजर ने Desired Size नहीं दिया है, तो बिना क्वालिटी बदले ही डाउनलोड करें
+      if (desiredKB <= 0) return canvas.toDataURL(mimeType);
+      
+      // यहाँ आप क्वालिटी को एडजस्ट करके (try-catch या लूप से) फ़ाइल साइज को करीब लाने की कोशिश कर सकते हैं
+      // फिलहाल डेमो के लिए, सिर्फ 1.0 क्वालिटी पर ही रिटर्न कर रहे हैं
+      let dataUrl = canvas.toDataURL(mimeType, quality);
+      return dataUrl;
+    }
+  </script>
+</body>
+</html>
