@@ -6,7 +6,7 @@
     <meta name="description" content="Your one-stop solution for all image and PDF tools. Compress, convert, edit, and more!">
     <meta name="keywords" content="image tools, PDF tools, compress images, convert PDF, online tools">
     <meta name="author" content="Your Name">
-    <title>Tools Website - Image & PDF Tools</title>
+    <title>Online Free Tools - Image & PDF Tools</title>
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -26,9 +26,9 @@
 
         /* Header */
         header {
-            background-color: #007bff;
+            background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient background */
             color: #fff;
-            padding: 20px 0;
+            padding: 40px 0;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
@@ -36,6 +36,7 @@
         header h1 {
             margin: 0;
             font-size: 2.5rem;
+            font-weight: 600;
         }
 
         /* Navigation */
@@ -43,37 +44,42 @@
             display: flex;
             justify-content: center;
             background-color: #333;
-            padding: 10px 0;
+            padding: 15px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         nav a {
             color: #fff;
-            margin: 0 15px;
+            margin: 0 20px;
             font-weight: bold;
             transition: color 0.3s ease;
         }
 
         nav a:hover {
-            color: #007bff;
+            color: #00cc99; /* Highlight color on hover */
         }
 
         /* Hero Section */
         .hero {
-            background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
+            background: linear-gradient(135deg, #2575fc, #6a11cb); /* Gradient background */
             color: #fff;
             text-align: center;
             padding: 100px 20px;
+            position: relative;
         }
 
         .hero h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .hero p {
             font-size: 1.2rem;
             max-width: 600px;
             margin: 0 auto;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         /* Tool Categories */
@@ -91,24 +97,25 @@
             margin: 20px;
             width: 300px;
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             padding: 20px;
         }
 
         .tool-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         .tool-card i {
             font-size: 3rem;
-            color: #007bff;
+            color: #2575fc; /* Icon color */
             margin-bottom: 20px;
         }
 
         .tool-card h3 {
             margin: 10px 0;
             font-size: 1.5rem;
-            background: linear-gradient(45deg, #007bff, #00cc99);
+            background: linear-gradient(45deg, #2575fc, #00cc99);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -116,6 +123,34 @@
         .tool-card p {
             padding: 0 20px;
             color: #555;
+        }
+
+        /* Separator Between Sections */
+        .section-separator {
+            text-align: center;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .section-separator::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #ddd;
+            z-index: 1;
+        }
+
+        .section-separator span {
+            background: #fff;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+            font-size: 1.2rem;
+            color: #777;
+            font-weight: 600;
         }
 
         /* Footer */
@@ -174,7 +209,7 @@
 <body>
     <!-- Header -->
     <header>
-        <h1>Tools Website</h1>
+        <h1>Online Free Tools</h1>
     </header>
 
     <!-- Navigation -->
@@ -193,10 +228,12 @@
 
     <!-- Image Tools Section -->
     <section id="image-tools" class="tools">
-        <a href="/tool/img-compress.html" class="tool-card">
-    <i class="fas fa-file-image"></i>
-    <h3>Image Compressor</h3>
-    <p>Compress your images without losing quality.</p>
+        <a href="/img-compress.html" class="tool-card">
+    <div>
+        <i class="fas fa-file-image"></i>
+        <h3>Image Compressor</h3>
+        <p>Compress your images without losing quality.</p>
+    </div>
 </a>
 
         <div class="tool-card">
@@ -225,6 +262,11 @@
             <p>Add watermarks to your images.</p>
         </div>
     </section>
+
+    <!-- Separator -->
+    <div class="section-separator">
+        <span>Explore PDF Tools</span>
+    </div>
 
     <!-- PDF Tools Section -->
     <section id="pdf-tools" class="tools">
@@ -262,7 +304,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2023 Tools Website. All rights reserved.</p>
+        <p>&copy; 2023 Online Free Tools. All rights reserved.</p>
     </footer>
 </body>
 </html>
